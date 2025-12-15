@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vynix - Streaming Film AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <button class="back-button" id="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <header id="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showHomePage(); return false;">VYNIX</a>
+            
+            <div class="header-icons">
+                <button class="search-btn" onclick="openSearch()"><i class="fas fa-search"></i></button>
+                
+                <button class="user-btn" onclick="openUserProfile()"><i class="fas fa-user"></i></button> 
+                
+                <button class="menu-toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div id="home-page" class="page-content active"> 
+            
+            <div class="hero-banner-video-container">
+                <video class="hero-video-background" autoplay muted loop playsinline>
+                    <source src="assets/video/grok_video_2025-12-13-21-28-43.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video HTML5.
+                </video>
+                
+                <div class="hero-overlay"></div>
+                
+                <div class="hero-overlay-content">
+                    <div class="hero-tags">
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Adventure</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <h1 class="hero-title">ANAK AJAIB</h1>
+                    <div class="hero-meta">
+                        <i class="fas fa-star"></i> 8.8 <span class="dot-separator">·</span> 2025 <span class="dot-separator">·</span> 1h 45m
+                    </div>
+                    <p class="hero-description">Seorang anak muda dengan bakat luar biasa harus memilih antara kehidupan normal dan takdir untuk menyelamatkan dunia dari ancaman yang tak terlihat. Streaming eksklusif dengan teknologi AI VYNIX.</p>
+                    <div class="hero-buttons">
+                        <button class="hero-play-btn" onclick="openVideoPlayer('Anak Ajaib')">
+                            <i class="fas fa-play"></i> PUTAR SEKARANG
+                        </button>
+                        <button class="hero-info-btn" onclick="showMovieDetail('Anak Ajaib')">
+                            <i class="fas fa-info-circle"></i> INFO LEBIH LANJUT
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="row-title">Top Film Minggu Ini</h2>
+                <div class="row-content">
+                    <div class="poster" onclick="showMovieDetail('The Shawshank Redemption')"><div class="poster-img">The Shawshank Redemption</div><div class="poster-info"><div class="poster-title">The Shawshank Redemption</div><div class="poster-rating"><i class="fas fa-star"></i><span>9.3</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('The Last of Us')"><div class="poster-img">The Last of Us</div><div class="poster-info"><div class="poster-title">The Last of Us</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.8</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Pulp Fiction')"><div class="poster-img">Pulp Fiction</div><div class="poster-info"><div class="poster-title">Pulp Fiction</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.9</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Interstellar')"><div class="poster-img">Interstellar</div><div class="poster-info"><div class="poster-title">Interstellar</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.6</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('The Dark Knight')"><div class="poster-img">The Dark Knight</div><div class="poster-info"><div class="poster-title">The Dark Knight</div><div class="poster-rating"><i class="fas fa-star"></i><span>9.0</span></div></div></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h2 class="row-title">Film Terpopuler</h2>
+                <div class="row-content">
+                    <div class="poster" onclick="showMovieDetail('The Dark Knight')"><div class="poster-img">The Dark Knight</div><div class="poster-info"><div class="poster-title">The Dark Knight</div><div class="poster-rating"><i class="fas fa-star"></i><span>9.0</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Inception')"><div class="poster-img">Inception</div><div class="poster-info"><div class="poster-title">Inception</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.8</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Interstellar')"><div class="poster-img">Interstellar</div><div class="poster-info"><div class="poster-title">Interstellar</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.6</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Parasite')"><div class="poster-img">Parasite</div><div class="poster-info"><div class="poster-title">Parasite</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.5</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Pulp Fiction')"><div class="poster-img">Pulp Fiction</div><div class="poster-info"><div class="poster-title">Pulp Fiction</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.9</span></div></div></div>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h2 class="faq-title">Tanya Jawab VYNIX AI Streaming</h2>
+                <div class="faq-list">
+                    <button class="faq-question" onclick="toggleAnswer(1)">
+                        1. Apa perbedaan utama VYNIX dengan platform seperti Netflix? <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="answer-1">
+                        VYNIX didukung oleh kecerdasan buatan (AI) yang tidak hanya merekomendasikan film, tetapi juga menyesuaikan kualitas streaming secara real-time berdasarkan *mood* dan kondisi jaringan Anda, menawarkan pengalaman yang lebih personal dan imersif.
+                    </div>
+                    
+                    <button class="faq-question" onclick="toggleAnswer(2)">
+                        2. Apakah AI VYNIX bisa membuat rekomendasi yang lebih baik? <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="answer-2">
+                        Ya. AI VYNIX menganalisis ribuan variabel, termasuk waktu tontonan, genre yang Anda hindari, dan bahkan *subgenre* mikro. Rekomendasi kami ditujukan untuk mengungkap film tersembunbi yang benar-benar akan Anda sukai.
+                    </div>
+
+                    <button class="faq-question" onclick="toggleAnswer(3)">
+                        3. Bagaimana cara kerja fitur AI Assistant? <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="answer-3">
+                        AI Assistant berfungsi sebagai pemandu pribadi Anda. Anda dapat bertanya tentang plot film, menanyakan sinopsis tanpa *spoiler*, atau meminta daftar tontonan tematik (misal: "Film Sci-Fi terbaik dengan plot twist"), semua dalam antarmuka obrolan.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <h2 class="row-title">Serial Terbaru</h2>
+                <div class="row-content">
+                    <div class="poster" onclick="showMovieDetail('Stranger Things')"><div class="poster-img">Stranger Things</div><div class="poster-info"><div class="poster-title">Stranger Things</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.7</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('The Last of Us')"><div class="poster-img">The Last of Us</div><div class="poster-info"><div class="poster-title">The Last of Us</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.8</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('Succession')"><div class="poster-img">Succession</div><div class="poster-info"><div class="poster-title">Succession</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.9</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('The Bear')"><div class="poster-img">The Bear</div><div class="poster-info"><div class="poster-title">The Bear</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.6</span></div></div></div>
+                    <div class="poster" onclick="showMovieDetail('House of the Dragon')"><div class="poster-img">House of the Dragon</div><div class="poster-info"><div class="poster-title">House of the Dragon</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.5</span></div></div></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div id="profile-page" class="page-content" style="display: none;">
+            <div class="profile-container" id="auth-container">
+                <div class="auth-card">
+                    <h2 class="auth-title">Masuk ke VYNIX</h2>
+                    <p class="auth-subtitle">Nikmati pengalaman streaming yang dipersonalisasi AI.</p>
+                    
+                    <form class="auth-form" id="login-form">
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Kata Sandi" required>
+                        <button type="submit" class="auth-btn login-btn">MASUK</button>
+                    </form>
+                    
+                    <div class="separator">ATAU</div>
+
+                    <div id="g_id_onload"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID" 
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="rectangular"
+                         data-theme="outline"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                    <p class="auth-switch">Belum punya akun? <a href="#" onclick="showRegisterForm(); return false;">Daftar Sekarang</a></p>
+                </div>
+            </div>
+            
+            <div class="profile-container" id="user-profile-info" style="display: none;">
+                
+                <div class="profile-card">
+                    <img src="https://placehold.co/100x100/333333/FFFFFF?text=A" alt="Foto Profil" class="profile-picture" id="profile-img">
+                    <h2 class="profile-name" id="profile-name">Pengguna VYNIX</h2>
+                    <p class="profile-email" id="profile-email">email@example.com</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="watch-hours">0</span>
+                            <span class="stat-label">Jam Tonton</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-lists">0</span>
+                            <span class="stat-label">Di Daftar Saya</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="fav-genre">Aksi</span>
+                            <span class="stat-label">Genre Favorit</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="profile-section-title" style="margin-top: 2rem;">SUBSCRIPTION STATUS</h3>
+                    <div class="subscription-status-box">
+                        <div class="status-row">
+                            <span>Current Plan</span> <span class="status-value free-status">FREE</span>
+                        </div>
+                        <div class="status-row">
+                            <span>Devices</span> <span class="status-value">1/1</span>
+                        </div>
+                        <div class="status-row">
+                            <span>Quality</span> <span class="status-value">HD</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="profile-section-title">Pengaturan Akun</h3>
+                    <button class="profile-btn"><i class="fas fa-lock"></i> Ubah Kata Sandi</button>
+                    <button class="profile-btn"><i class="fas fa-cog"></i> Preferensi Notifikasi</button>
+                    <button class="profile-btn" onclick="showPage('subscription');"><i class="fas fa-credit-card"></i> Kelola Langganan</button>
+                    
+                    <button class="auth-btn logout-btn" onclick="logoutUser()">KELUAR</button>
+                </div>
+                
+                <div class="profile-content-area">
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" onclick="switchProfileTab(this, 'mylist')">MY LIST</button>
+                        <button class="tab-btn" onclick="switchProfileTab(this, 'history')">WATCH HISTORY</button>
+                    </div>
+
+                    <div class="tab-content list-grid active-tab" id="mylist-content">
+                        <div class="poster list-item" onclick="showMovieDetail('Quantum Genesis')">
+                            <div class="poster-img">Quantum Genesis</div>
+                            <div class="poster-info"><div class="poster-title">Quantum Genesis</div><div class="poster-rating"><i class="fas fa-star"></i><span>8.7</span></div></div>
+                        </div>
+                        <div class="poster list-item" onclick="showMovieDetail('The Matrix Reloaded')">
+                            <div class="poster-img">The Matrix Reloaded</div>
+                            <div class="poster-info"><div class="poster-title">The Matrix Reloaded</div><div class="poster-rating"><i class="fas fa-star"></i><span>7.2</span></div></div>
+                        </div>
+                        <div class="poster list-item" onclick="showMovieDetail('The Dark Knight')">
+                            <div class="poster-img">The Dark Knight</div>
+                            <div class="poster-info"><div class="poster-title">The Dark Knight</div><div class="poster-rating"><i class="fas fa-star"></i><span>9.0</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content list-grid" id="history-content" style="display: none;">
+                        <p style="color: #555; text-align: center; width: 100%; padding-top: 2rem;">Riwayat tontonan akan muncul di sini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="movie-detail" class="page-content movie-detail" style="display: none;">
+            <div class="movie-header">
+                <div class="movie-poster-large" id="movie-poster-large">Movie Poster</div>
+                <div class="movie-info-large">
+                    <h1 class="movie-title-large" id="movie-title-large">Movie Title</h1>
+                    <div class="movie-meta-large">
+                        <span id="movie-year">2023</span>
+                        <span class="dot-separator">·</span>
+                        <span id="movie-duration">2h 30m</span>
+                        <span class="dot-separator">·</span>
+                        <span id="movie-genre">Action, Drama</span>
+                    </div>
+                    <div class="movie-rating-large">
+                        <i class="fas fa-star"></i>
+                        <span id="movie-rating">8.8</span>
+                    </div>
+                    <p class="movie-description" id="movie-description">
+                        This is a dummy movie description.
+                    </p>
+                    <div class="action-buttons">
+                        <button class="play-btn" onclick="openVideoPlayer(document.getElementById('movie-title-large').textContent)">
+                            <i class="fas fa-play"></i> Putar
+                        </button>
+                        <button class="add-list-btn"><i class="fas fa-plus"></i> Tambah ke Daftar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <div class="comments-header">
+                    <h3 class="comments-title">Komentar Pengguna</h3>
+                </div>
+                <div class="comment-form">
+                    <input type="text" class="comment-input" placeholder="Tulis komentar Anda..." id="comment-input">
+                    <button class="comment-submit" onclick="addComment()">Kirim</button>
+                </div>
+                <div class="comment-list" id="comment-list">
+                    <div class="comment">
+                        <div class="comment-header"><span>John Doe</span><span>2 jam yang lalu</span></div>
+                        <div class="comment-content">Film ini luar biasa!</div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-header"><span>Jane Smith</span><span>5 jam yang lalu</span></div>
+                        <div class="comment-content">Visual effects-nya keren banget.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="video-page" class="page-content video-page" style="display: none;">
+            
+            <div class="video-main-content">
+                <div class="video-player-container">
+                    <div class="video-player paused" id="video-player-display">
+                        <div class="video-placeholder">
+                            <span class="video-dummy-text">MEMUTAR: <span id="current-video-name">The Dark Knight</span></span>
+                        </div>
+
+                        <div class="video-controls-overlay" id="video-controls">
+                            <div class="controls-container">
+                                
+                                <div class="top-controls">
+                                    <button class="control-btn control-back" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                                </div>
+                                
+                                <button class="control-btn large-center-btn" id="center-play-pause" onclick="togglePlayPause()">
+                                    <i class="fas fa-play" id="center-play-icon" style="margin-left: 3px;"></i>
+                                </button>
+                                
+                                <div class="bottom-controls">
+                                    <div class="progress-area">
+                                        <input type="range" class="seek-slider" min="0" max="100" value="0" id="seek-slider">
+                                        <span class="time-display" id="time-display">00:00 / 1:30:00</span>
+                                    </div>
+                                    
+                                    <div class="main-controls-row">
+                                        <div class="controls-left">
+                                            <button class="control-btn" onclick="togglePlayPause()"><i class="fas fa-play" id="main-play-icon"></i></button>
+                                            <button class="control-btn volume-btn" onclick="toggleMute()"><i class="fas fa-volume-up" id="volume-icon"></i></button>
+                                            <input type="range" class="volume-slider" min="0" max="100" value="50" id="volume-slider">
+                                        </div>
+
+                                        <div class="controls-right">
+                                            <button class="control-btn settings-btn"><i class="fas fa-cog"></i></button>
+                                            <button class="control-btn fullscreen-btn"><i class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-info-area">
+                    <h1 class="video-title-main" id="playing-video-title">The Dark Knight</h1>
+                    <div class="video-actions">
+                        <div class="video-stats">
+                            <span id="video-views">2.3M Tampilan</span>
+                            <span class="dot-separator">·</span>
+                            <span id="video-date">Dirilis 2008</span>
+                        </div>
+                        <div class="video-rating-btns">
+                            <button><i class="fas fa-thumbs-up"></i> 10k</button>
+                            <button><i class="fas fa-thumbs-down"></i></button>
+                            <button><i class="fas fa-share"></i> Bagikan</button>
+                            <button class="add-list-btn"><i class="fas fa-plus"></i> Simpan</button>
+                        </div>
+                    </div>
+                    
+                    <div class="movie-synopsis-box">
+                        <p id="video-synopsis-text">
+                            Deskripsi film akan dimuat di sini.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="comments-section">
+                    <div class="comments-header">
+                        <h3 class="comments-title">Komentar (Dummy)</h3>
+                    </div>
+                    <div class="comment-form">
+                        <input type="text" class="comment-input" placeholder="Tulis komentar Anda..." id="video-comment-input">
+                        <button class="comment-submit" onclick="addVideoComment()">Kirim</button>
+                    </div>
+                    <div class="comment-list" id="video-comment-list">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-recommendations-sidebar" id="video-recommendations-sidebar">
+                </div>
+        </div>
+        
+        <div id="mylist-page" class="page-content" style="display: none;">
+            <h2 class="page-main-title">Daftar Saya</h2>
+            <p style="color: #555;">Film dan serial yang Anda simpan akan muncul di sini...</p>
+        </div>
+
+        <div id="subscription-page" class="page-content" style="display: none;">
+            <div class="subscription-header">
+                <h2 class="subscription-title">Pilih Paket Langganan VYNIX Premium</h2>
+                <p class="subscription-description">Nikmati streaming tanpa batas, tanpa iklan, dan kualitas terbaik.</p>
+            </div>
+            <div class="subscription-content">
+                
+                <div class="plan-card">
+                    <h3>Paket Basic Bulanan</h3>
+                    <p class="price">Rp 10.000 / bulan</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Kualitas HD (720p)</li>
+                        <li><i class="fas fa-check"></i> Tonton di 1 perangkat</li>
+                        <li><i class="fas fa-times" style="color: var(--secondary-color);"></i> Ada iklan terbatas</li>
+                    </ul>
+                    <button class="select-plan-btn basic" onclick="startSubscription('Basic Bulanan')">
+                        Pilih Paket
+                    </button>
+                </div>
+
+                <div class="plan-card active">
+                    <h3>Paket Premium Bulanan</h3>
+                    <p class="price">Rp 30.000 / bulan</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Kualitas **Ultra HD (4K)**</li>
+                        <li><i class="fas fa-check"></i> Tonton di **4 perangkat** bersamaan</li>
+                        <li><i class="fas fa-check"></i> **Bebas Iklan Selamanya**</li>
+                    </ul>
+                    <button class="select-plan-btn premium" onclick="startSubscription('Premium Bulanan')">
+                        Langganan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> <div class="ai-modal" id="ai-modal">
+        <div class="ai-modal-content">
+            <div class="ai-modal-header">
+                <h3 class="ai-modal-title">AI Assistant Vynix</h3>
+                <button class="close-ai" onclick="closeAIAssistant()">&times;</button>
+            </div>
+            <div class="ai-chat" id="ai-chat">
+                <div class="ai-message ai-bot-message">
+                    Halo! Saya asisten AI Vynix. Bagaimana saya bisa membantu Anda hari ini?
+                </div>
+            </div>
+            <div class="ai-input-area">
+                <input type="text" class="ai-input" id="ai-input" placeholder="Tanyakan sesuatu tentang film..." onkeypress="handleAIKeyPress(event)">
+                <button class="ai-send" onclick="sendAIQuestion()">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div id="main-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" onclick="openUserProfile(); toggleSidebar(); return false;">
+                <img id="sidebar-profile-img" src="https://placehold.co/100x100/333333/FFFFFF?text=A" alt="Profile" class="profile-thumb">
+                <span id="sidebar-profile-name">Tamu VYNIX</span>
+            </a>
+            <button class="close-btn" id="sidebar-close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link active" data-nav-target="Beranda" onclick="showHomePage(); toggleSidebar(); return false;"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#" class="sidebar-link" data-nav-target="Daftar Saya" onclick="showPage('mylist'); toggleSidebar(); return false;"><i class="fas fa-list"></i> Daftar Saya</a>
+        </nav>
+
+        <hr>
+        
+        <div class="sidebar-features">
+            <a href="#" class="sidebar-link" onclick="openAIAssistant(); toggleSidebar(); return false;"><i class="fas fa-robot"></i> AI Asisten</a>
+            <a href="#" class="sidebar-link" data-nav-target="Langganan" onclick="showPage('subscription'); toggleSidebar(); return false;"><i class="fas fa-crown"></i> Langganan Premium</a>
+            </div>
+
+        <hr>
+
+        <a href="#" class="sidebar-link" onclick="logoutUser(); toggleSidebar(); return false;"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-content-full">
+            <h2 class="footer-logo">VYNIX</h2>
+            <p class="tagline">The future of AI-powered streaming. Experience films like never before with cutting-edge technology and personalized recommendations.</p>
+            
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>COMPANY</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>LEGAL</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>SOSIAL MEDIA</h4>
+                    <a href="#">Pusat Bantuan (FAQ)</a>
+                    <a href="#">Cara Langganan</a>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@vynixid?_r=1&_t=ZS-915f1cb6hYD" target="_blank" aria-label="TikTok Vynix">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.instagram.com/vynixai?igsh=MTNvdHk1MWs1M3Axbg==" target="_blank" aria-label="Instagram Vynix">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vynix. All rights reserved.</p>
+                <p class="ai-build">Powered by AI • Built for the Future</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
